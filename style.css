@@ -4,7 +4,7 @@
   --surface-2: #1c1c21;
   --text: #fafafa;
   --text-muted: #a1a1aa;
-  --text-dim: #52525b;
+  --text-dim: #71717a;
   --accent: #3b82f6;
   --accent-hover: #2563eb;
   --accent-glow: rgba(59, 130, 246, 0.5);
@@ -27,6 +27,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
@@ -128,7 +129,7 @@ a {
 .hero {
   position: relative;
   text-align: center;
-  padding: clamp(5rem, 12vw, 8rem) 1.5rem clamp(4rem, 10vw, 6rem);
+  padding: clamp(5rem, 12vw, 8rem) 0 clamp(4rem, 10vw, 6rem);
   overflow: hidden;
 }
 
@@ -237,6 +238,7 @@ a {
 }
 
 .copy-btn {
+  position: relative;
   background: none;
   border: none;
   color: var(--text-dim);
@@ -256,6 +258,31 @@ a {
 
 .copy-btn.copied {
   color: var(--success);
+}
+
+.copy-btn::after {
+  content: "Copied!";
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--success);
+  color: #fff;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.copy-btn.copied::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 .trust-line {
@@ -312,6 +339,10 @@ a {
 section {
   padding: clamp(2.5rem, 5vw, 3.5rem) 0;
   border-bottom: 1px solid var(--border);
+}
+
+main > section:last-of-type {
+  border-bottom: none;
 }
 
 section h2 {
@@ -440,6 +471,21 @@ section h2 {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   margin: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-dim) transparent;
+}
+
+.terminal-window pre::-webkit-scrollbar {
+  height: 6px;
+}
+
+.terminal-window pre::-webkit-scrollbar-thumb {
+  background: var(--text-dim);
+  border-radius: 3px;
+}
+
+.terminal-window pre::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .terminal-window code {
@@ -521,6 +567,8 @@ section h2 {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.5s ease, transform 0.5s ease;
@@ -541,6 +589,16 @@ section h2 {
 .persona h3 {
   font-size: 1rem;
   color: var(--text);
+}
+
+.persona .terminal-window {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.persona .terminal-window pre {
+  flex: 1;
 }
 
 .role-badge {
@@ -845,6 +903,11 @@ footer {
 /* Responsive — Mobile */
 @media (max-width: 768px) {
   .nav-links {
+    gap: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .nav-links a[href^="#"] {
     display: none;
   }
 

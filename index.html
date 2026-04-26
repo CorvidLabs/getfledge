@@ -24,7 +24,7 @@
 
   <nav class="navbar" aria-label="Primary navigation">
     <div class="container nav-container">
-      <a href="#" class="logo">
+      <a href="#main-content" class="logo" aria-label="Fledge — back to top">
         <span class="logo-icon" aria-hidden="true">⚡</span> fledge
       </a>
       <div class="nav-links">
@@ -300,12 +300,26 @@ $ fledge run dev</code></pre>
   </footer>
 
   <script>
+    function flashCopied(btn) {
+      btn.classList.add('copied');
+      setTimeout(function() { btn.classList.remove('copied'); }, 1800);
+    }
+
     function copyCmd(btn) {
       var cmd = btn.parentElement.querySelector('.install-cmd').textContent;
-      navigator.clipboard.writeText(cmd).then(function() {
-        btn.classList.add('copied');
-        setTimeout(function() { btn.classList.remove('copied'); }, 2000);
-      });
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(cmd).then(function() { flashCopied(btn); });
+        return;
+      }
+      var ta = document.createElement('textarea');
+      ta.value = cmd;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'absolute';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); flashCopied(btn); } catch (e) {}
+      document.body.removeChild(ta);
     }
 
     var animTargets = document.querySelectorAll('.pillar, .persona, .team-card, .cta-card, .problem-item, .code-block');
@@ -316,6 +330,7 @@ $ fledge run dev</code></pre>
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
           }
         });
       }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
