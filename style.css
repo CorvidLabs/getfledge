@@ -569,6 +569,7 @@ section h2 {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  min-width: 0;
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.5s ease, transform 0.5s ease;
@@ -786,6 +787,22 @@ section h2 {
   font-family: var(--font-mono);
   font-size: 0.9rem;
   color: var(--text-muted);
+}
+
+.alt-install {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.alt-install code {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.05rem 0.3rem;
+  border-radius: 3px;
 }
 
 .final-cta {

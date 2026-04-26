@@ -41,7 +41,7 @@
     <header class="hero">
       <div class="container">
         <div class="badge-rust">
-          <span class="dot" aria-hidden="true"></span> Built with Rust &middot; v0.13
+          <span class="dot" aria-hidden="true"></span> Built with Rust &middot; v0.15
         </div>
         <h1>One CLI for your entire dev lifecycle</h1>
         <p class="tagline">
@@ -90,7 +90,7 @@
               </div>
               <pre><code>$ fledge run test
 $ fledge review
-$ fledge release patch</code></pre>
+$ fledge release</code></pre>
             </div>
             <p>One config. One interface. Everything talks.</p>
           </div>
@@ -104,33 +104,33 @@ $ fledge release patch</code></pre>
         <div class="pillar-grid">
           <article class="pillar">
             <div class="pillar-icon" aria-hidden="true">🏗️</div>
-            <h3><code>fledge init</code></h3>
-            <p>Language-aware scaffolding. Templates with post-hooks, git init, and dependency setup. Zero config drift.</p>
+            <h3><code>fledge templates</code></h3>
+            <p>Scaffold from built-in or community templates. Post-hooks, git init, dependency setup &mdash; zero config drift.</p>
           </article>
           <article class="pillar">
             <div class="pillar-icon" aria-hidden="true">⚙️</div>
             <h3><code>fledge run</code></h3>
-            <p>Auto-detects Cargo, npm, Go, Python. One command for build, test, lint — no Makefile required.</p>
+            <p>Auto-detects Cargo, npm, Go, Python. One command for build, test, lint &mdash; no Makefile required.</p>
           </article>
           <article class="pillar">
             <div class="pillar-icon" aria-hidden="true">📐</div>
             <h3><code>fledge spec</code></h3>
-            <p>Keep specs and code in sync. Drift detection fails CI before your API breaks production.</p>
+            <p>Keep specs and code in sync. <code>spec check</code> fails CI before your API breaks production.</p>
           </article>
           <article class="pillar">
             <div class="pillar-icon" aria-hidden="true">🤖</div>
             <h3><code>fledge review</code></h3>
-            <p>Local AI code review via Ollama or Claude. No API keys for local models. Catches bugs, enforces conventions.</p>
+            <p>Single or multi-model AI review via Ollama or Claude. Spec-aware, panel-style critiques on the same diff.</p>
           </article>
           <article class="pillar">
             <div class="pillar-icon" aria-hidden="true">🚀</div>
             <h3><code>fledge release</code></h3>
-            <p>Conventional commits &rarr; changelog &rarr; version bump &rarr; git tag &rarr; GitHub release. One command.</p>
+            <p>Conventional commits &rarr; changelog &rarr; version bump &rarr; git tag &rarr; push. One command.</p>
           </article>
           <article class="pillar">
             <div class="pillar-icon" aria-hidden="true">🧩</div>
-            <h3><code>fledge plugin</code></h3>
-            <p>Rust-based plugin system. Publish to crates.io, share across teams, compose custom workflows.</p>
+            <h3><code>fledge plugins</code></h3>
+            <p>Rust-based plugin protocol. Curated defaults, community search, composable lanes for custom workflows.</p>
           </article>
         </div>
       </div>
@@ -172,11 +172,12 @@ $ fledge release patch</code></pre>
                 <span class="tdot yellow" aria-hidden="true"></span>
                 <span class="tdot green" aria-hidden="true"></span>
               </div>
-              <pre><code>$ fledge review --output json
-{"issues": [{"file": "src/auth.rs",
-  "line": 54, "fix": "..."}]}
-$ fledge run test --output json
-{"status": "pass", "time": 0.042}</code></pre>
+              <pre><code>$ fledge review --json
+{"schema_version": 1,
+ "action": "review", ...}
+$ fledge run test --json
+{"schema_version": 1,
+ "action": "run_task", ...}</code></pre>
             </div>
             <p>Strict JSON, no prompts, machine-parseable. Your agents finally understand the codebase.</p>
           </article>
@@ -220,11 +221,11 @@ $ fledge run dev</code></pre>
           </article>
           <article class="team-card">
             <h3>Fast Onboarding</h3>
-            <p><code>fledge doctor</code> validates the entire environment. <code>fledge init</code> scaffolds with team templates.</p>
+            <p><code>fledge doctor</code> validates the entire environment. <code>fledge templates init</code> scaffolds with team templates.</p>
           </article>
           <article class="team-card">
             <h3>Code Metrics</h3>
-            <p>LOC, test ratios, churn — <code>fledge metrics</code> gives leads visibility without extra tooling.</p>
+            <p>LOC, test ratios, churn &mdash; <code>fledge metrics</code> (default plugin) gives leads visibility without extra tooling.</p>
           </article>
         </div>
       </div>
@@ -233,19 +234,19 @@ $ fledge run dev</code></pre>
     <section class="plugins">
       <div class="container">
         <h2>Extend without lock-in</h2>
-        <p class="section-intro">Fledge plugins are Rust crates. Install from crates.io, git, or local paths.</p>
+        <p class="section-intro">Fledge plugins are Rust crates. Curated defaults for the common case, search GitHub for the rest.</p>
         <div class="code-showcase">
           <div class="code-block">
-            <span class="comment"># Install a community plugin</span>
-            <div class="cmd-line">$ fledge plugin add coverage</div>
+            <span class="comment"># Install the curated plugin set (github, deps, metrics)</span>
+            <div class="cmd-line">$ fledge plugins install --defaults</div>
           </div>
           <div class="code-block">
-            <span class="comment"># Use it immediately</span>
-            <div class="cmd-line">$ fledge coverage report</div>
+            <span class="comment"># Use plugin commands immediately</span>
+            <div class="cmd-line">$ fledge metrics --tests</div>
           </div>
           <div class="code-block">
             <span class="comment"># Or compose custom workflows</span>
-            <div class="cmd-line">$ fledge lane run ci</div>
+            <div class="cmd-line">$ fledge lanes run ci</div>
           </div>
         </div>
       </div>
@@ -259,16 +260,19 @@ $ fledge run dev</code></pre>
             <div class="step-number" aria-hidden="true">1</div>
             <h3>Install</h3>
             <pre><code>cargo install fledge</code></pre>
+            <p class="alt-install">or <code>brew install CorvidLabs/tap/fledge</code></p>
           </div>
           <div class="cta-card">
             <div class="step-number" aria-hidden="true">2</div>
-            <h3>Initialize</h3>
-            <pre><code>fledge init</code></pre>
+            <h3>Scaffold</h3>
+            <pre><code>fledge templates init my-app</code></pre>
+            <p class="alt-install">or run in an existing project</p>
           </div>
           <div class="cta-card">
             <div class="step-number" aria-hidden="true">3</div>
             <h3>Ship</h3>
-            <pre><code>fledge release patch</code></pre>
+            <pre><code>fledge release</code></pre>
+            <p class="alt-install">auto-bumps from conventional commits</p>
           </div>
         </div>
         <div class="final-cta">
