@@ -308,17 +308,19 @@ $ fledge run dev</code></pre>
       });
     }
 
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.pillar, .persona, .team-card, .cta-card, .problem-item, .code-block').forEach(function(el) {
-      observer.observe(el);
-    });
+    var animTargets = document.querySelectorAll('.pillar, .persona, .team-card, .cta-card, .problem-item, .code-block');
+    if (!('IntersectionObserver' in window)) {
+      animTargets.forEach(function(el) { el.classList.add('visible'); });
+    } else {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+      animTargets.forEach(function(el) { observer.observe(el); });
+    }
   </script>
 
 </body>
