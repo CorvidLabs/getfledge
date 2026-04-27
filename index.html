@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fledge — One CLI for your entire dev lifecycle</title>
+  <title>Fledge: One CLI for your entire dev lifecycle</title>
   <meta name="description" content="Scaffold, build, test, review, and release from one binary. Structured JSON for AI agents. Pretty output for humans. Built in Rust.">
-  <meta property="og:title" content="Fledge — One CLI for your entire dev lifecycle">
+  <meta property="og:title" content="Fledge: One CLI for your entire dev lifecycle">
   <meta property="og:description" content="Scaffold, build, test, review, and release from one binary. Built in Rust.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://corvidlabs.github.io/getfledge/">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Fledge — Dev Lifecycle CLI">
+  <meta name="twitter:title" content="Fledge: Dev Lifecycle CLI">
   <meta name="twitter:description" content="One CLI for scaffolding, tasks, code review, releases, and more. Humans and AI, same interface.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪶</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -24,8 +24,8 @@
 
   <nav class="navbar" aria-label="Primary navigation">
     <div class="container nav-container">
-      <a href="#main-content" class="logo" aria-label="Fledge — back to top">
-        <span class="logo-icon" aria-hidden="true">⚡</span> fledge
+      <a href="#main-content" class="logo" aria-label="Fledge, back to top">
+        <span class="logo-icon" aria-hidden="true">🪶</span> fledge
       </a>
       <div class="nav-links">
         <a href="#features">Features</a>
@@ -45,7 +45,7 @@
         </div>
         <h1>One CLI for your entire dev lifecycle</h1>
         <p class="tagline">
-          Scaffold, build, test, review, and release &mdash; from one binary.<br>
+          Scaffold, build, test, review, and release from one binary.<br>
           <span class="highlight">Structured JSON for AI agents.</span> Pretty output for humans.
         </p>
 
@@ -60,21 +60,20 @@
           <a href="#get-started" class="btn btn-primary">Get Started</a>
         </div>
 
-        <p class="trust-line">Single binary. No runtime dependencies. MIT licensed.</p>
+        <p class="trust-line">Single binary. No runtime to install. MIT licensed.</p>
       </div>
       <div class="hero-glow" aria-hidden="true"></div>
     </header>
 
     <section class="problem">
       <div class="container">
-        <h2>Your tools don't talk to each other</h2>
+        <h2>Disconnected tools. Fragmented workflow.</h2>
         <div class="problem-grid">
           <div class="problem-item before">
             <h3>Before</h3>
             <ul>
               <li><code>Makefile</code> for tasks</li>
               <li><code>shell scripts</code> for releases</li>
-              <li><code>GitHub Actions</code> for CI</li>
               <li>Separate AI tools for review</li>
               <li>Tribal knowledge for onboarding</li>
             </ul>
@@ -92,7 +91,7 @@
 $ fledge review
 $ fledge release</code></pre>
             </div>
-            <p>One config. One interface. Everything talks.</p>
+            <p>One config. One interface. Everything connects.</p>
           </div>
         </div>
       </div>
@@ -105,12 +104,12 @@ $ fledge release</code></pre>
           <article class="pillar">
             <div class="pillar-icon" aria-hidden="true">🏗️</div>
             <h3><code>fledge templates</code></h3>
-            <p>Scaffold from built-in or community templates. Post-hooks, git init, dependency setup &mdash; zero config drift.</p>
+            <p>Scaffold from built-in or community templates. Post-hooks, git init, dependency setup. Reproducible from day one.</p>
           </article>
           <article class="pillar">
             <div class="pillar-icon" aria-hidden="true">⚙️</div>
             <h3><code>fledge run</code></h3>
-            <p>Auto-detects Cargo, npm, Go, Python. One command for build, test, lint &mdash; no Makefile required.</p>
+            <p>Auto-detects Cargo, npm, Go, Python. One command for build, test, lint. No Makefile required.</p>
           </article>
           <article class="pillar">
             <div class="pillar-icon" aria-hidden="true">📐</div>
@@ -130,7 +129,7 @@ $ fledge release</code></pre>
           <article class="pillar">
             <div class="pillar-icon" aria-hidden="true">🧩</div>
             <h3><code>fledge plugins</code></h3>
-            <p>Rust-based plugin protocol. Curated defaults, community search, composable lanes for custom workflows.</p>
+            <p>Extend with curated defaults or community plugins. Composable lanes for custom workflows.</p>
           </article>
         </div>
       </div>
@@ -139,7 +138,7 @@ $ fledge release</code></pre>
     <section class="workflow" id="workflow">
       <div class="container">
         <h2>One binary. Three interfaces.</h2>
-        <p class="section-intro">Fledge adapts its output based on who &mdash; or what &mdash; is calling it.</p>
+        <p class="section-intro">Fledge adapts its output to whoever (or whatever) is calling it.</p>
 
         <div class="persona-grid">
           <article class="persona" aria-labelledby="persona-dev">
@@ -155,7 +154,7 @@ $ fledge release</code></pre>
               </div>
               <pre><code>$ fledge review
 ✎ Analyzing 8 changed files...
-⚠ src/auth.rs:54 — Unhandled Result
+⚠ src/auth.rs:54: Unhandled Result
 ? Apply fix? [Y/n/diff]</code></pre>
             </div>
             <p>Interactive prompts, pretty diffs, colored output.</p>
@@ -203,7 +202,7 @@ $ fledge run dev</code></pre>
           </article>
         </div>
 
-        <p class="callout">Same tool. Different flags. Everyone wins.</p>
+        <p class="callout">Same tool. Different flags.</p>
       </div>
     </section>
 
@@ -213,7 +212,7 @@ $ fledge run dev</code></pre>
         <div class="team-grid">
           <article class="team-card">
             <h3>Standardized Config</h3>
-            <p>One <code>fledge.toml</code> per repo. Every project runs the same way — no more &ldquo;works on my machine.&rdquo;</p>
+            <p>One <code>fledge.toml</code> per repo. Every project runs the same way. No more &ldquo;works on my machine.&rdquo;</p>
           </article>
           <article class="team-card">
             <h3>Spec Enforcement</h3>
@@ -225,7 +224,7 @@ $ fledge run dev</code></pre>
           </article>
           <article class="team-card">
             <h3>Code Metrics</h3>
-            <p>LOC, test ratios, churn &mdash; <code>fledge metrics</code> (default plugin) gives leads visibility without extra tooling.</p>
+            <p>LOC, test ratios, churn. <code>fledge metrics</code> (default plugin) gives leads visibility without extra tooling.</p>
           </article>
         </div>
       </div>
@@ -288,7 +287,7 @@ $ fledge run dev</code></pre>
     <div class="container">
       <div class="footer-content">
         <div class="footer-brand">
-          <span class="logo">⚡ fledge</span>
+          <span class="logo">🪶 fledge</span>
           <p>The unified dev lifecycle CLI.</p>
         </div>
         <div class="footer-links">
