@@ -41,7 +41,7 @@
     <header class="hero">
       <div class="container">
         <div class="badge-rust">
-          <span class="dot" aria-hidden="true"></span> Built with Rust &middot; v0.15
+          <span class="dot" aria-hidden="true"></span> Built with Rust &middot; v0.15.3
         </div>
         <h1>One CLI for your entire dev lifecycle</h1>
         <p class="tagline">
@@ -153,11 +153,11 @@ $ fledge release</code></pre>
                 <span class="tdot green" aria-hidden="true"></span>
               </div>
               <pre><code>$ fledge review
-✎ Analyzing 8 changed files...
-⚠ src/auth.rs:54: Unhandled Result
-? Apply fix? [Y/n/diff]</code></pre>
+⠋ Reviewing changes against main [claude]
+⚠ src/auth.rs:54: unhandled Result
+✓ 7 files clean</code></pre>
             </div>
-            <p>Interactive prompts, pretty diffs, colored output.</p>
+            <p>Colored output, inline findings, spec-aware analysis.</p>
           </article>
 
           <article class="persona" aria-labelledby="persona-ai">
@@ -193,9 +193,9 @@ $ fledge run test --json
                 <span class="tdot green" aria-hidden="true"></span>
               </div>
               <pre><code>$ fledge doctor
-✓ Rust 1.75+ detected
-✓ Git hooks installed
-✓ Environment ready
+✅ fledge config loaded
+✅ repository — remote configured
+✅ Active provider: ollama
 $ fledge run dev</code></pre>
             </div>
             <p>Guided setup, env checks, zero tribal knowledge. New hires push code on day one.</p>
@@ -220,11 +220,11 @@ $ fledge run dev</code></pre>
           </article>
           <article class="team-card">
             <h3>Fast Onboarding</h3>
-            <p><code>fledge doctor</code> validates the entire environment. <code>fledge templates init</code> scaffolds with team templates.</p>
+            <p><code>fledge doctor</code> validates the entire environment. <code>fledge templates init my-app</code> scaffolds with team templates.</p>
           </article>
           <article class="team-card">
             <h3>Code Metrics</h3>
-            <p>LOC, test ratios, churn. <code>fledge metrics</code> (default plugin) gives leads visibility without extra tooling.</p>
+            <p>LOC, test ratios, churn. Install default plugins with <code>fledge plugins install --defaults</code>, then <code>fledge metrics</code> works immediately.</p>
           </article>
         </div>
       </div>
@@ -233,7 +233,7 @@ $ fledge run dev</code></pre>
     <section class="plugins">
       <div class="container">
         <h2>Extend without lock-in</h2>
-        <p class="section-intro">Fledge plugins are Rust crates. Curated defaults for the common case, search GitHub for the rest.</p>
+        <p class="section-intro">Fledge plugins are standalone executables distributed via GitHub. Curated defaults for the common case, discover more with <code>fledge plugins search</code>.</p>
         <div class="code-showcase">
           <div class="code-block">
             <span class="comment"># Install the curated plugin set (github, deps, metrics)</span>
@@ -241,7 +241,7 @@ $ fledge run dev</code></pre>
           </div>
           <div class="code-block">
             <span class="comment"># Use plugin commands immediately</span>
-            <div class="cmd-line">$ fledge metrics --tests</div>
+            <div class="cmd-line">$ fledge metrics</div>
           </div>
           <div class="code-block">
             <span class="comment"># Or compose custom workflows</span>

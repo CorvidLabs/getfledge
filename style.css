@@ -5,9 +5,9 @@
   --text: #fafafa;
   --text-muted: #a1a1aa;
   --text-dim: #71717a;
-  --accent: #3b82f6;
-  --accent-hover: #2563eb;
-  --accent-glow: rgba(59, 130, 246, 0.5);
+  --accent: #60a5fa;
+  --accent-hover: #93c5fd;
+  --accent-glow: rgba(96, 165, 250, 0.4);
   --rust: #dea584;
   --success: #22c55e;
   --border: #27272a;
@@ -55,7 +55,7 @@ a {
   position: absolute;
   top: -40px;
   left: 0;
-  background: var(--accent);
+  background: #2563eb;
   color: #fff;
   padding: 8px 16px;
   text-decoration: none;
@@ -305,13 +305,13 @@ a {
 }
 
 .btn-primary {
-  background: var(--accent);
+  background: #2563eb;
   color: #fff;
   box-shadow: 0 0 15px var(--accent-glow);
 }
 
 .btn-primary:hover {
-  background: var(--accent-hover);
+  background: #1d4ed8;
   transform: translateY(-1px);
   box-shadow: 0 0 25px var(--accent-glow);
 }
@@ -613,7 +613,7 @@ section h2 {
 
 .role-badge.ai {
   color: var(--accent);
-  background: rgba(59, 130, 246, 0.1);
+  background: rgba(96, 165, 250, 0.1);
 }
 
 .persona .terminal-window {
@@ -674,7 +674,7 @@ section h2 {
   font-family: var(--font-mono);
   font-size: 0.85rem;
   color: var(--accent);
-  background: rgba(59, 130, 246, 0.08);
+  background: rgba(96, 165, 250, 0.08);
   padding: 0.1rem 0.3rem;
   border-radius: 3px;
 }
@@ -755,7 +755,7 @@ section h2 {
   top: -12px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--accent);
+  background: #2563eb;
   color: #fff;
   width: 24px;
   height: 24px;
